@@ -1,0 +1,13 @@
+server: 
+  port: 5566 
+  
+spring:
+  application:
+    name:  microservicecloud-config
+  cloud:
+    config:
+      server:
+        git:
+          #uri: git@github.com:misterlizhaopeng/microservicecloud-config.git #GitHub上面的git仓库名字  我的本机不行
+          #如果Git仓库为公开仓库，可以不填写用户名和密码，如果是私有仓库需要填写
+          uri: https://github.com/misterlizhaopeng/microservicecloud-config.git    #但是这样写是可以的

@@ -1,0 +1,28 @@
+server: 
+  port: 9527
+ 
+spring: 
+  application:
+    name: microservicecloud-zuul-gateway
+ 
+eureka: 
+  client: 
+    service-url: 
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka  
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true 
+ 
+info:
+  app.name: microservicecloud-zuul
+  company.name: www.lp.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+zuul: 
+  prefix: /com.lip             #url的前缀，如：http://localhost:9527/com.lip/mydept/dept/list
+  #ignored-services: "microservicecloud-dept"    #忽略真实的服务名称（可以写具体的名字，也可以用*表示所有服务）;不加这个的话，新的的的可以访问，原来的也可以访问（http://localhost:8001/dept/list、http://localhost:9527/microservicecloud-dept/dept/list  都可以访问）
+  ignored-services: "*"
+  routes: 
+    mydept.serviceId: microservicecloud-dept
+    mydept.path: /mydept/**
